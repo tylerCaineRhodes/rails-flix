@@ -167,5 +167,15 @@ Movie.create!([
     director: "Patty Jenkins",
     duration: "141 min",
     image_file_name: "wonder-woman.png"
+  },
+  {
+    title: "Lost in Translation", 
+    rating: "PG-13",
+    total_gross: 118700000, 
+    description: "A lonely, aging movie star named Bob Harris (Bill Murray) and a conflicted newlywed, Charlotte (Scarlett Johansson), meet in Tokyo. Bob is there to film a Japanese whiskey commercial; Charlotte is accompanying her celebrity-photographer husband. Strangers in a foreign land, the two find escape, distraction and understanding amidst the bright Tokyo lights after a chance meeting in the quiet lull of the hotel bar. They form a bond that is as unlikely as it is heartfelt and meaningful.",
+    released_on: "2003-09-09", 
+    director: "Sofia Coppola", 
+    duration: "104 min", 
+    image_file_name: "placeholder.png"
   }
 ])
