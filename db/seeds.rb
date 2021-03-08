@@ -179,3 +179,25 @@ Movie.create!([
     image_file_name: "placeholder.png"
   }
 ])
+
+
+Review.create!([ 
+  {
+    name: "Terry",
+     stars: 2, 
+     comment: "nothing personal, I just really don't like super hero stuff.",
+     movie_id: 1
+  },
+   {
+    name: "Tyler",
+     stars: 5, 
+     comment: "One of my all time favorite movies",
+     movie_id: 13
+  },
+  {
+    name: "Jobie",
+    stars: 5, 
+    comment: "I like superheroes, my name is Jobie",
+    movie_id: 1
+  },
+])
