@@ -1,4 +1,5 @@
 class Movie < ApplicationRecord
+  has_many :reviews, dependent: :destroy
 
   validates :title, :released_on, :duration, presence: true
   validates :description, length: { minimum: 25 }
@@ -7,7 +8,7 @@ class Movie < ApplicationRecord
     with: /\w+\.(jpg|png)\z/i,
     message: "must be a JPG or PNG image"
   }
-  
+
   RATINGS = %w(G PG PG-13 R NC-17)
   validates :rating, inclusion: { in: RATINGS }
 
@@ -30,5 +31,5 @@ class Movie < ApplicationRecord
   def isFlop?
     total_gross < 25000000
   end
-  
+
 end
