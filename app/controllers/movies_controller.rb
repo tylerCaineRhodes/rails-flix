@@ -1,21 +1,20 @@
 class MoviesController < ApplicationController
+  before_action :set_movie , only: [:show, :edit, :update, :destroy]
+
   def index
     @movies = Movie.released
   end
 
   def show
-    @movie = Movie.find(params[:id])
   end
 
   def edit
-    @movie = Movie.find(params[:id])
   end
 
   def update
-    @movie = Movie.find(params[:id])
     if @movie.update(movie_params)
       redirect_to @movie, notice: "Movie succesfully updated!"
-    else 
+    else
       render :edit
     end
   end
@@ -28,13 +27,12 @@ class MoviesController < ApplicationController
     @movie = Movie.create(movie_params)
     if @movie.save
       redirect_to @movie, notice: "Movie succesfully created!"
-    else 
+    else
       render :new
     end
   end
 
   def destroy
-    @movie = Movie.find(params[:id])
     @movie.destroy
     redirect_to movies_url, danger: "WTF...you just deleted #{@movie.title}!!!"
   end
@@ -47,3 +45,8 @@ def movie_params
     :title, :description, :rating, :released_on, :total_gross, :duration,
     :director, :image_file_name )
  end
+
+def set_movie
+  @movie = Movie.find(params[:id])
+end
+
