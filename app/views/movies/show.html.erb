@@ -9,11 +9,13 @@
     </h2>
     <div class="reviews">
       <%= link_to pluralize(@movie.reviews.size, "review"), movie_reviews_path(@movie) %>
+       
     </div>
     <p>
       <%= @movie.description %>
     </p>
     <table>
+    <%= link_to "Write a review", new_movie_review_path(@movie), class: "review" %>
       <tr>
         <th>Total Gross:</th>
         <td><%= total_gross(@movie) %></td>
