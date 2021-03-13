@@ -1,0 +1,6 @@
+<ul>
+  <% @users.collect.each do |u|%>
+    <li><%= u.name %></li>
+    <span><%= u.password_digest %></span>
+  <% end%>
+</ul>
