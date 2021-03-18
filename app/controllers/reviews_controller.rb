@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :set_movie
+  before_action :set_movie_for_review
 
   def index
     @reviews = @movie.reviews
@@ -26,7 +26,7 @@ def review_params
   params.require(:review).permit(:name, :stars, :comment)
 end
 
-def set_movie
+def set_movie_for_review
   @movie = Movie.find(params[:movie_id])
 end
 
