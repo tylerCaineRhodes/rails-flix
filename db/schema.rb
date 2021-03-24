@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 2021_03_14_024635) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "username"
+    t.boolean "admin", default: false
   end
 
   add_foreign_key "reviews", "movies"

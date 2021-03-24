@@ -1,5 +1,9 @@
+# frozen_string_literal: true
+
 class MoviesController < ApplicationController
-  before_action :set_movie , only: [:show, :edit, :update, :destroy]
+  before_action :set_movie, only: [:show, :edit, :update, :destroy]
+  before_action :require_signin, except: [:index, :show]
+  before_action :require_admin, except: [:index, :show]
 
   def index
     @movies = Movie.released

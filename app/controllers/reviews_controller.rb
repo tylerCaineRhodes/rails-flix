@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 class ReviewsController < ApplicationController
   before_action :set_movie_for_review
+  before_action :require_signin
 
   def index
     @reviews = @movie.reviews
