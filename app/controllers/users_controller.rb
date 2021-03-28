@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @reviews = @user.reviews
+    @favorite_movies = @user.favorite_movies
   end
 
   def new
@@ -28,8 +29,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @user.update(user_params)
@@ -44,15 +44,15 @@ class UsersController < ApplicationController
     session[:user_id] = nil
     redirect_to movies_url, alert: 'Account Succesfully deleted!'
   end
-end
 
-private
+  private
 
-def require_correct_user
-  @user = User.find(params[:id])
-  redirect_to root_url unless current_user?(@user)
-end
+  def require_correct_user
+    @user = User.find(params[:id])
+    redirect_to root_url unless current_user?(@user)
+  end
 
-def user_params
-  params.require(:user).permit(:name, :username, :email, :password, :password_confirmation)
+  def user_params
+    params.require(:user).permit(:name, :username, :email, :password, :password_confirmation)
+  end
 end
