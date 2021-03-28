@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root "movies#index"
   get "signup" => "users#new"
   get "signin" => "sessions#new"
+  get "movies/filter/:specification" => "movies#index", as: :filtered_movies
   
   resources :users
   
