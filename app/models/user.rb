@@ -1,4 +1,6 @@
  class User < ApplicationRecord
+  before_save :format_username, :set_slug
+
   has_secure_password
   has_many :reviews, dependent: :destroy
   has_many :favorites, dependent: :destroy
@@ -9,10 +11,23 @@
   validates :email, format: { with: /\S+@\S+/ },
     uniqueness: { case_sensitive: false }
      
-  scope :by_name, -> { order[:name] }
+  scope :by_name, -> { order(:name) }
   scope :not_admins, -> { by_name.where(admin: false) }
 
   def gravatar_id
     Digest::MD5::hexdigest(email.downcase)
   end
+
+  def format_username
+    self.username = username.downcase
+  end 
+  
+  def to_param
+    username
+  end
+
+  private
+    def set_slug
+      self.slug = username.parameterize
+    end
 end
