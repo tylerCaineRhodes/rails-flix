@@ -16,21 +16,20 @@ class ReviewsController < ApplicationController
     @review = @movie.reviews.new(review_params)
     @review.user = current_user
     if @review.save
-      redirect_to movie_reviews_path(@movie), notice: "Thanks for your review!"
+      redirect_to movie_reviews_path(@movie), notice: 'Thanks for your review!'
     else
-      flash[:error] = "Something went wrong"
+      flash[:error] = 'Something went wrong'
       render 'new'
     end
   end
+
+  private
+
+  def review_params
+    params.require(:review).permit(:stars, :comment)
+  end
+
+  def set_movie_for_review
+    @movie = Movie.find(params[:movie_id])
+  end
 end
-
-private
-
-def review_params
-  params.require(:review).permit(:stars, :comment)
-end
-
-def set_movie_for_review
-  @movie = Movie.find(params[:movie_id])
-end
-
